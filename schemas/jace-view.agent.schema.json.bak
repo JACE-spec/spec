@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/jace-view.agent.schema.json",
+  "title": "JACE View (Agent Wire)",
+  "type": "object",
+  "required": [
+    "version",
+    "type"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "type": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "audience": {
+      "enum": [
+        "agent",
+        "human",
+        "both"
+      ]
+    },
+    "props": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "affordances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/affordance"
+      }
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/link"
+      }
+    },
+    "summary": {
+      "type": [
+        "string",
+        "object"
+      ]
+    },
+    "pagination": {
+      "$ref": "#/$defs/pagination"
+    }
+  },
+  "allOf": [
+    {
+      "not": {
+        "required": [
+          "presentation"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "affordance": {
+      "type": "object",
+      "required": [
+        "action",
+        "method",
+        "href"
+      ],
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        "href": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "dry_run_supported": {
+          "type": "boolean",
+          "default": true
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/precondition"
+          }
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "precondition": {
+      "type": "object",
+      "required": [
+        "field",
+        "op"
+      ],
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "op": {
+          "enum": [
+            "equals",
+            "not_equals",
+            "in",
+            "not_in",
+            "gte",
+            "lte",
+            "exists",
+            "absent"
+          ]
+        },
+        "value": {},
+        "values": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "in",
+                  "not_in"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "values"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "not": {
+                  "enum": [
+                    "in",
+                    "not_in",
+                    "exists",
+                    "absent"
+                  ]
+                }
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "link": {
+      "type": "object",
+      "required": [
+        "rel",
+        "href"
+      ],
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "title": {
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pagination": {
+      "type": "object",
+      "required": [
+        "limit",
+        "order_dir",
+        "order_by"
+      ],
+      "properties": {
+        "cursor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "next_cursor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prev_cursor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200,
+          "default": 50
+        },
+        "order_by": {
+          "type": "string"
+        },
+        "order_dir": {
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/jace-action.schema.json",
+  "type": "object",
+  "required": [
+    "action"
+  ],
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "dry_run": {
+      "type": "boolean"
+    },
+    "intent": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

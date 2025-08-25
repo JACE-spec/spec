@@ -1,0 +1,1686 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jace-spec.github.io/spec/overview/">
+      
+      
+      
+        <link rel="next" href="../getting-started/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Overview - JACE (JSON Agent Context Envelope)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#json-agent-context-envelope-jace-machine-first-pages-human-friendly-rendering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="JACE (JSON Agent Context Envelope)" class="md-header__button md-logo" aria-label="JACE (JSON Agent Context Envelope)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JACE (JSON Agent Context Envelope)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jace-spec/spec" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="JACE (JSON Agent Context Envelope)" class="md-nav__button md-logo" aria-label="JACE (JSON Agent Context Envelope)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JACE (JSON Agent Context Envelope)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jace-spec/spec" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-machine-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why machine-first?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-jace" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use JACE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to use JACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#content-negotiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content negotiation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-structure-reserved-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core structure (reserved keys)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audience-aware-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audience-aware responses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jace-html-practical-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      JACE → HTML: practical patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JACE → HTML: practical patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sections-vs-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Sections vs. entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-buttons-explicit-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Buttons = explicit actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-paragraphs-with-light-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) Paragraphs with light Markdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cards-that-can-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Cards that can act
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-human-only-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Human-only header
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-field-html-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presentation field (HTML-only)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manifest-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manifest &amp; discovery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wire-level-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wire-level rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actions-safer-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions: safer by default
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-ndjson-sse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Events (NDJSON / SSE)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-html-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility &amp; HTML mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security &amp; stability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      The future
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-htmlaria-mapping-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic → HTML/ARIA Mapping (reference)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i18n-directionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      i18n &amp; Directionality
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-World Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-sandbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime / Sandbox
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Specs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Specs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/content-negotiation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Content Negotiation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/pagination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pagination
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/aria-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ARIA Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Schemas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-view.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-view.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-view.agent.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-view.agent.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-action.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-action.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-action-result.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-action-result.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-event.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-event.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Snippets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-machine-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why machine-first?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-jace" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use JACE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to use JACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#content-negotiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content negotiation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-structure-reserved-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core structure (reserved keys)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audience-aware-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audience-aware responses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jace-html-practical-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      JACE → HTML: practical patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JACE → HTML: practical patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sections-vs-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Sections vs. entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-buttons-explicit-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Buttons = explicit actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-paragraphs-with-light-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) Paragraphs with light Markdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cards-that-can-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Cards that can act
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-human-only-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Human-only header
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-field-html-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presentation field (HTML-only)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manifest-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manifest &amp; discovery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wire-level-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wire-level rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actions-safer-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions: safer by default
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-ndjson-sse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Events (NDJSON / SSE)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-html-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility &amp; HTML mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security &amp; stability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      The future
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-htmlaria-mapping-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic → HTML/ARIA Mapping (reference)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i18n-directionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      i18n &amp; Directionality
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="json-agent-context-envelope-jace-machine-first-pages-human-friendly-rendering">JSON Agent Context Envelope (JACE): Machine-First Pages, Human-Friendly Rendering<a class="headerlink" href="#json-agent-context-envelope-jace-machine-first-pages-human-friendly-rendering" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Quick links:<br />
+• <a href="../getting-started/">Getting Started</a> • <a href="../concepts/">Core Concepts</a> • <a href="../runtime-sandbox/">Runtime/Sandbox</a> • <a href="../security/">Security</a> • <a href="../roadmap/">Roadmap</a></p>
+</blockquote>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Most web UIs are built for people, not agents. Real pages mix content with layout wrappers, utility classes, hydration scaffolding, analytics, and other noise. Agents end up scraping the DOM, guessing parameters, and breaking when a class name changes.</p>
+<p><strong>JSON Agent Context Envelope (JACE)</strong> flips that model. JACE is a <strong>machine-first, JSON representation</strong> of a page’s <strong>entities, state, and affordances (actions)</strong>. From a single source of truth you:</p>
+<ul>
+<li>Return <strong>JACE JSON</strong> to agents for precise, schema-checked interaction.</li>
+<li>Render <strong>accessible HTML</strong> for humans.</li>
+<li>Keep visual details in a <strong><code>presentation</code></strong> property used only for HTML rendering (never sent to agents).</li>
+</ul>
+<p>Think: <strong>semantic JSON for meaning</strong> → <strong>HTML for humans</strong>.</p>
+<hr />
+<h2 id="why-machine-first">Why machine-first?<a class="headerlink" href="#why-machine-first" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>No guessing:</strong> Actions are explicit (<code>action</code>, <code>method</code>, <code>href</code>, <code>params</code>) instead of hidden behind forms or JS handlers.</li>
+<li><strong>Stable contract:</strong> JSON Schemas, semantic versioning, deterministic pagination, and predictable error models.</li>
+<li><strong>UI decoupled:</strong> Redesign HTML freely; the JACE contract remains intact.</li>
+<li><strong>Safer automation:</strong> <code>dry_run</code>, audit previews, policy hints, and capability scopes are first-class.</li>
+</ul>
+<hr />
+<h2 id="how-to-use-jace">How to use JACE<a class="headerlink" href="#how-to-use-jace" title="Permanent link">&para;</a></h2>
+<h3 id="content-negotiation">Content negotiation<a class="headerlink" href="#content-negotiation" title="Permanent link">&para;</a></h3>
+<p>Serve JACE and HTML from the same URL:</p>
+<div class="highlight"><pre><span></span><code>Accept: application/jace+json  → JACE for agents
+Accept: text/html             → HTML for humans
+</code></pre></div>
+<ul>
+<li>Send <code>Vary: Accept</code> so caches handle both.</li>
+<li>Optionally link JACE from your HTML:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/jace+json&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/page?format=jace&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="core-structure-reserved-keys">Core structure (reserved keys)<a class="headerlink" href="#core-structure-reserved-keys" title="Permanent link">&para;</a></h3>
+<p><code>version</code>, <code>$schema</code>, <code>page</code>, <code>entities</code>, <code>type</code>, <code>id</code>, <code>props</code>, <code>affordances</code>, <code>children</code>, <code>links</code>, <code>summary</code>, <code>pagination</code>, <code>ui_hints</code>, <strong><code>presentation</code> (HTML-only)</strong>, and <strong><code>audience</code></strong> (<code>agent | human | both</code>, default <code>both</code>).</p>
+<h3 id="audience-aware-responses">Audience-aware responses<a class="headerlink" href="#audience-aware-responses" title="Permanent link">&para;</a></h3>
+<p>Mark nodes that are only useful for humans (e.g., headers, decorative sections) with <code>audience: "human"</code>.<br />
+Mark machine-only helper blocks with <code>audience: "agent"</code>.<br />
+Renderers and servers should apply audience filtering before delivery, and must never rely on it for access control.</p>
+<hr />
+<h2 id="jace-html-practical-patterns">JACE → HTML: practical patterns<a class="headerlink" href="#jace-html-practical-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="1-sections-vs-entities">1) Sections vs. entities<a class="headerlink" href="#1-sections-vs-entities" title="Permanent link">&para;</a></h3>
+<p>Use <code>type: "section"</code> to group child entities without leaking layout semantics.</p>
+<p><strong>JACE</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/schemas/jace-view.schema.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;section&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;overview&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;children&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paragraph&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hero_copy&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title_md&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;## Hi there&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cta_btn&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contact me&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;affordances&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;contact.open&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#contact&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;section&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container mx-auto py-12&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Rendered HTML</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;overview&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mx-auto py-12&quot;</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- children render here --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<blockquote>
+<p>Rule: <strong><code>type</code> is semantic</strong> (<code>section</code>, <code>ticket</code>, <code>product</code>, …), <strong>not</strong> a visual HTML tag. If you need tag hints, put them in <code>presentation</code>.</p>
+</blockquote>
+<hr />
+<h3 id="2-buttons-explicit-actions">2) Buttons = explicit actions<a class="headerlink" href="#2-buttons-explicit-actions" title="Permanent link">&para;</a></h3>
+<p>Buttons declare actions in <code>affordances</code>. Render as form (no-JS fallback) or JS handler (nicer UX).</p>
+<p><strong>JACE</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;buy_ticket_btn&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy ticket&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;affordances&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket.buy&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/tickets&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;buy ticket&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;dry_run_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;auth&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tickets:write&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;button&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;btn btn-primary&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>HTML (no-JS)</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;buy_ticket_btn&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/agent/tickets&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;buy ticket&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>Buy ticket<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>HTML (JS)</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;buy_ticket_btn&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>Buy ticket<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;buy_ticket_btn&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/agent/tickets&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span><span class="s1">&#39;Idempotency-Key&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomUUID</span><span class="p">()},</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;buy ticket&#39;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<hr />
+<h3 id="3-paragraphs-with-light-markdown">3) Paragraphs with light Markdown<a class="headerlink" href="#3-paragraphs-with-light-markdown" title="Permanent link">&para;</a></h3>
+<p>Store rich copy in <code>props</code>; the renderer decides how much Markdown to support.</p>
+<p><strong>JACE</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paragraph&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_summary&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title_md&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;## Checkout failing&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content_md&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;**Lorem ipsum** dolor sit amet, *consectetur* adipiscing elit...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;div&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prose max-w-none&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>HTML (example)</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;issue_summary&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;prose max-w-none&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Checkout failing<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content_0&quot;</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Lorem ipsum<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> dolor sit amet, <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>consectetur<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> adipiscing elit...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;content_1&quot;</span><span class="p">&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<hr />
+<h3 id="4-cards-that-can-act">4) Cards that can act<a class="headerlink" href="#4-cards-that-can-act" title="Permanent link">&para;</a></h3>
+<p>Bundle data and actions; render as a card for humans; expose explicit affordances for agents.</p>
+<p><strong>JACE</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket_card_t_8129&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy the ticket&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Why you might want a new ticket&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;assignee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;me&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;affordances&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket.buy&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/tickets&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t_8129&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;buy ticket&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;dry_run_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;preconditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;props.status&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;op&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;equals&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open&quot;</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;article&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;neutral&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;md&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rounded-xl border p-4 shadow-sm&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>HTML</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">article</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;ticket_card_t_8129&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;rounded-xl border p-4 shadow-sm&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Buy the ticket<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="p">&gt;</span>Why you might want a new ticket<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;priority&quot;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;act_t_8129&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/agent/tickets&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;t_8129&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;buy ticket&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>buy ticket<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<h3 id="5-human-only-header">5) Human-only header<a class="headerlink" href="#5-human-only-header" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;section&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;human&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Site&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;header&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="presentation-field-html-only">Presentation field (HTML-only)<a class="headerlink" href="#presentation-field-html-only" title="Permanent link">&para;</a></h2>
+<p><strong>Policy:</strong> <code>presentation</code> exists <strong>only</strong> to help the HTML renderer choose tags, variants, classes, and design tokens.
+<strong>Never expose <code>presentation</code> to agents.</strong> It is non-semantic, unstable, and irrelevant to machine behavior.</p>
+<ul>
+<li><strong>Server rule:</strong> Strip <code>presentation</code> (and any <code>classes</code>/<code>style</code>) from all JACE responses when <code>Accept: application/jace+json</code> (or <code>audience=agent</code>).</li>
+<li><strong>Schema rule (wire):</strong> the <strong>agent wire schema forbids <code>presentation</code></strong>.</li>
+<li><strong>Internal/build schema:</strong> may allow <code>presentation</code> for renderers.</li>
+</ul>
+<p><strong>Internal JACE (with presentation)</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket_card_t_8129&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy the ticket&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;affordances&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket.buy&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/tickets&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t_8129&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;article&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;neutral&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;md&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rounded-xl border p-4 shadow-sm&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>What the agent receives (presentation stripped)</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket_card_t_8129&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy the ticket&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;affordances&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket.buy&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/tickets&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t_8129&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Implementation hint (pseudo):
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">toAgentPayload</span><span class="p">(</span><span class="nx">jace</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">deepOmit</span><span class="p">(</span><span class="nx">jace</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;presentation&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;classes&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;style&#39;</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h2 id="manifest-discovery">Manifest &amp; discovery<a class="headerlink" href="#manifest-discovery" title="Permanent link">&para;</a></h2>
+<p>Expose a tiny manifest so agents can discover views, actions, and events.</p>
+<p><strong>Endpoint:</strong> <code>GET /.well-known/agent-manifest</code>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;JACE/0.1&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;dashboard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your Site&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;base_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;views&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;home&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/views/home&quot;</span><span class="w"> </span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ticket.buy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/tickets&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;params_schema_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/schemas/ticket-buy.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;returns_schema_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/schemas/ticket.schema.json&quot;</span>
+<span class="w">  </span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;sse&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/agent/events&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ticket.created&quot;</span><span class="p">,</span><span class="s2">&quot;ticket.updated&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jace-view&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/schemas/jace-view.schema.json&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>HTML can advertise it:
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;agent-manifest&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/.well-known/agent-manifest&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/jace+json&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/?format=jace&quot;</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="wire-level-rules">Wire-level rules<a class="headerlink" href="#wire-level-rules" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Caching:</strong> <code>ETag</code>/<code>Last-Modified</code> on views.</li>
+<li><strong>Pagination:</strong> cursor-based (<code>pagination.next_cursor</code>) plus explicit <code>order_by</code>/<code>order_dir</code>.</li>
+<li><strong>Idempotency:</strong> support <code>Idempotency-Key</code> header for POST/PUT/PATCH.</li>
+<li><strong>Errors:</strong> standard envelope with codes + hints:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POLICY_DENIED&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Priority 5 requires role: manager&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Request lower priority&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Use manager credential&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="actions-safer-by-default">Actions: safer by default<a class="headerlink" href="#actions-safer-by-default" title="Permanent link">&para;</a></h2>
+<p>Every write action should support <code>dry_run</code> and return an <code>audit_preview</code>.</p>
+<p><strong>Request</strong>
+<div class="highlight"><pre><span></span><code><span class="err">POST /agent/tickets</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">Idempotency-Key: 1b6f1b9d-...</span>
+<span class="err">{</span>
+<span class="err">  &quot;action&quot;: &quot;ticket.buy&quot;,</span>
+<span class="err">  &quot;params&quot;: { &quot;id&quot;: &quot;t_8129&quot;, &quot;title&quot;: &quot;buy ticket&quot; },</span>
+<span class="err">  &quot;dry_run&quot;: true,</span>
+<span class="err">  &quot;intent&quot;: &quot;Buy a ticket for the user&quot;</span>
+<span class="err">}</span>
+</code></pre></div></p>
+<p><strong>Response</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dry_run&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t_9001&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;audit_preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CREATE ticket id=t_9001 title=&#39;buy ticket&#39;&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h2 id="events-ndjson-sse">Events (NDJSON / SSE)<a class="headerlink" href="#events-ndjson-sse" title="Permanent link">&para;</a></h2>
+<p>Push only meaningful state changes—no analytics or hydration noise.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;ticket.updated&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;t_8129&quot;</span><span class="p">,</span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="s2">&quot;2025-08-10T18:20:11Z&quot;</span><span class="p">,</span><span class="nt">&quot;entity&quot;</span><span class="p">:</span><span class="s2">&quot;ticket&quot;</span><span class="p">,</span><span class="nt">&quot;changes&quot;</span><span class="p">:{</span><span class="nt">&quot;status&quot;</span><span class="p">:[</span><span class="s2">&quot;open&quot;</span><span class="p">,</span><span class="s2">&quot;pending&quot;</span><span class="p">]},</span><span class="nt">&quot;recommended_affordances&quot;</span><span class="p">:[{</span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="s2">&quot;ticket.assign&quot;</span><span class="p">,</span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;PATCH&quot;</span><span class="p">,</span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="s2">&quot;/agent/tickets/{id}&quot;</span><span class="p">,</span><span class="nt">&quot;params&quot;</span><span class="p">:{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;t_8129&quot;</span><span class="p">,</span><span class="nt">&quot;assignee&quot;</span><span class="p">:</span><span class="s2">&quot;me&quot;</span><span class="p">}}]}</span>
+</code></pre></div>
+<hr />
+<h2 id="accessibility-html-mapping">Accessibility &amp; HTML mapping<a class="headerlink" href="#accessibility-html-mapping" title="Permanent link">&para;</a></h2>
+<p>Your HTML renderer must map JACE semantics to <strong>proper HTML/ARIA</strong> (e.g., <code>card</code> → <code>&lt;article role="region"&gt;</code>, <code>button</code> → <code>&lt;button&gt;</code>, <code>section</code> → <code>&lt;section&gt;</code>), with keyboard focus, labels, and landmarks. JACE keeps the meaning; renderers ensure <strong>WCAG-compliant</strong> delivery.</p>
+<hr />
+<h2 id="internationalization">Internationalization<a class="headerlink" href="#internationalization" title="Permanent link">&para;</a></h2>
+<p>Support <code>lang</code> at page/entity level and optional <code>i18n</code> dictionaries:
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;i18n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;strings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy the ticket&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ticket kaufen&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h2 id="security-stability">Security &amp; stability<a class="headerlink" href="#security-stability" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Never allow JS in JACE (including <code>presentation</code>).</li>
+<li>Strip <code>presentation</code> for agent responses.</li>
+<li>Validate all JACE documents and action payloads with JSON Schema.</li>
+<li>Scope credentials with capabilities; enforce rate limits and approval flows for risky actions.</li>
+</ul>
+<hr />
+<h2 id="the-future">The future<a class="headerlink" href="#the-future" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Agent-ready web:</strong> JACE becomes the machine-native layer so agents stop scraping human DOMs.</li>
+<li><strong>Framework support:</strong> JSX/templating compilers target a JACE IR → HTML for humans, JACE for agents.</li>
+<li><strong>Agent SEO:</strong> JACE acts like JSON-LD with <strong>actions</strong>—searchable, indexable, and automatable.</li>
+<li><strong>Safer autonomy:</strong> dry-run, audit, and policy gates are part of the contract, not bolt-ons.</li>
+</ul>
+<hr />
+<h2 id="semantic-htmlaria-mapping-reference">Semantic → HTML/ARIA Mapping (reference)<a class="headerlink" href="#semantic-htmlaria-mapping-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>JACE type</th>
+<th>HTML</th>
+<th>ARIA/Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>section</code></td>
+<td><code>&lt;section&gt;</code></td>
+<td>consider <code>aria-labelledby</code> when titled</td>
+</tr>
+<tr>
+<td><code>card</code></td>
+<td><code>&lt;article&gt;</code></td>
+<td><code>role="region"</code>, focusable header</td>
+</tr>
+<tr>
+<td><code>button</code></td>
+<td><code>&lt;button&gt;</code></td>
+<td>keyboard activation, <code>aria-pressed</code> if toggle</td>
+</tr>
+<tr>
+<td><code>paragraph</code></td>
+<td><code>&lt;p&gt;</code> or <code>&lt;div&gt;</code></td>
+<td>preserve reading order</td>
+</tr>
+</tbody>
+</table>
+<p>Renderers MUST meet WCAG 2.2 AA for focus order, color contrast, and landmark usage.</p>
+<hr />
+<h2 id="i18n-directionality">i18n &amp; Directionality<a class="headerlink" href="#i18n-directionality" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>lang</code> may be set at page/entity. Missing strings fall back in this order: <strong>entity.lang → page.lang → i18n.default → <code>en</code></strong>.</li>
+<li>Direction (<code>dir</code>) inferred from <code>lang</code> (<code>ar</code>, <code>fa</code>, <code>he</code>, <code>ur</code> → RTL) or explicitly overridden in renderer config.</li>
+<li>Translators operate on <code>i18n.strings[&lt;lang&gt;]</code> maps; unknown keys are ignored.</li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>JACE cleanly separates <strong>meaning</strong> from <strong>presentation</strong>. Define pages in semantic JSON with explicit affordances; render accessible HTML for people; return clean, schema-validated JACE for agents. The result is a web that humans love to use and agents can reliably operate—no scraping, no guesswork, just intent and action.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

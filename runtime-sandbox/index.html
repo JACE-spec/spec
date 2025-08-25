@@ -1,0 +1,1405 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jace-spec.github.io/spec/runtime-sandbox/">
+      
+      
+        <link rel="prev" href="../real-world/">
+      
+      
+        <link rel="next" href="../security/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Runtime / Sandbox - JACE (JSON Agent Context Envelope)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jace-sandbox-runtime-quickjs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="JACE (JSON Agent Context Envelope)" class="md-header__button md-logo" aria-label="JACE (JSON Agent Context Envelope)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JACE (JSON Agent Context Envelope)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Runtime / Sandbox
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jace-spec/spec" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="JACE (JSON Agent Context Envelope)" class="md-nav__button md-logo" aria-label="JACE (JSON Agent Context Envelope)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JACE (JSON Agent Context Envelope)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jace-spec/spec" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-World Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Runtime / Sandbox
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime / Sandbox
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jace-sandbox-runtime-quickjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      JACE Sandbox Runtime (QuickJS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JACE Sandbox Runtime (QuickJS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-module-abi" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Module ABI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) HTTP API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) HTTP API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoint-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endpoint Consistency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-determinism-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Determinism &amp; Safety
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Determinism &amp; Safety">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeouts-fuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeouts &amp; Fuel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sessions-multi-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Sessions (multi-tenant)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-action-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      6) Action semantics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-calculator-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      7) Calculator example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-agent-first-dashboard-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      8) Agent-first Dashboard pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-events-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      9) Events (optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-roadmap-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      10) Roadmap (runtime)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-security-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      11) Security checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      12) FAQ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Specs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Specs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/content-negotiation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Content Negotiation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/pagination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pagination
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specs/aria-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ARIA Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Schemas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-view.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-view.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-view.agent.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-view.agent.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-action.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-action.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-action-result.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-action-result.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/jace-event.schema.json" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    jace-event.schema.json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Snippets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jace-sandbox-runtime-quickjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      JACE Sandbox Runtime (QuickJS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JACE Sandbox Runtime (QuickJS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-module-abi" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Module ABI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) HTTP API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) HTTP API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoint-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endpoint Consistency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-determinism-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Determinism &amp; Safety
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Determinism &amp; Safety">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeouts-fuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeouts &amp; Fuel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sessions-multi-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Sessions (multi-tenant)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-action-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      6) Action semantics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-calculator-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      7) Calculator example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-agent-first-dashboard-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      8) Agent-first Dashboard pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-events-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      9) Events (optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-roadmap-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      10) Roadmap (runtime)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-security-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      11) Security checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      12) FAQ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Runtime / Sandbox</h1>
+
+<h2 id="jace-sandbox-runtime-quickjs">JACE Sandbox Runtime (QuickJS)<a class="headerlink" href="#jace-sandbox-runtime-quickjs" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> Run <strong>Agent Apps</strong> and <strong>Agent-First Dashboards</strong> safely, deterministically, and with explicit <strong>affordances</strong> (actions).
+Agents fetch an JACE <strong>view</strong>, then execute <strong>actions</strong> (<code>/press</code> or <code>/actions</code>) with <code>dry_run → commit</code>, audit trails, and optional sessions.</p>
+<hr />
+<h3 id="1-architecture">1) Architecture<a class="headerlink" href="#1-architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>QuickJS VM</strong> runs an unbundled JS “module” that sets:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="nb">globalThis</span><span class="p">.</span><span class="nx">jace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">manifest</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">init</span><span class="p">(</span><span class="nx">env</span><span class="p">)</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nx">state</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">view</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span><span class="o">-&gt;</span><span class="w"> </span><span class="nx">jaceView</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="nx">actionName</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">env</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nx">ActionResult</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+* <strong>Deterministic runtime</strong>: patched <code>Date.now()</code> &amp; <code>new Date()</code>, seeded <code>Math.random</code>, no timers, no network.
+* <strong>HTTP wrapper</strong> exposes JSON endpoints so any agent or client can interact.</p>
+<hr />
+<h3 id="2-module-abi">2) Module ABI<a class="headerlink" href="#2-module-abi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">ActionEnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">session_id?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">   </span><span class="c1">// for multi-tenant state</span>
+<span class="w">  </span><span class="nx">dry_run?</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w">     </span><span class="c1">// preview-only</span>
+<span class="w">  </span><span class="nx">intent?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">       </span><span class="c1">// human-readable reason</span>
+<span class="w">  </span><span class="nx">now?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">          </span><span class="c1">// optional override (ISO)</span>
+<span class="w">  </span><span class="p">[</span><span class="nx">capability</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">unknown</span><span class="p">;</span><span class="w"> </span><span class="c1">// host-injected caps (future)</span>
+<span class="p">};</span>
+
+<span class="kr">type</span><span class="w"> </span><span class="nx">ActionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">;</span><span class="w">                  </span><span class="c1">// next state (runtime persists unless dry_run)</span>
+<span class="w">  </span><span class="nx">result?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">;</span><span class="w">                </span><span class="c1">// domain-level result payload</span>
+<span class="w">  </span><span class="nx">audit_preview?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">      </span><span class="c1">// e.g., &quot;PUSH 7&quot;, &quot;ADD 2+3 -&gt; 5&quot;</span>
+<span class="w">  </span><span class="nx">events?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">[];</span><span class="w">              </span><span class="c1">// domain events (optional)</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">?:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">message?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nb">globalThis</span><span class="p">.</span><span class="nx">jace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">manifest</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nx">init</span><span class="p">(</span><span class="nx">env</span><span class="o">:</span><span class="w"> </span><span class="kt">ActionEnv</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">,</span><span class="w">            </span><span class="c1">// return initial state (plain object)</span>
+<span class="w">  </span><span class="nx">view</span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">jaceView</span><span class="p">,</span><span class="w">            </span><span class="c1">// render JACE JSON (may include presentation)</span>
+<span class="w">  </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span><span class="w"> </span><span class="nx">env</span><span class="o">:</span><span class="w"> </span><span class="kt">ActionEnv</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">ActionResult</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>Guidelines</strong></p>
+<ul>
+<li><strong>Pure-ish actions:</strong> avoid hidden IO; let the host inject capabilities explicitly later.</li>
+<li><strong>Always set <code>audit_preview</code></strong>; it’s how humans/agents verify intent.</li>
+<li><strong>Be deterministic</strong>; rely on provided <code>env.now</code> or the runtime’s fixed clock.</li>
+</ul>
+<hr />
+<h3 id="3-http-api">3) HTTP API<a class="headerlink" href="#3-http-api" title="Permanent link">&para;</a></h3>
+<p>All requests/responses are JSON.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Method</th>
+<th>Path</th>
+<th>Body</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">GET</td>
+<td><code>/healthz</code></td>
+<td>—</td>
+<td><code>{ ok: true }</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">POST</td>
+<td><code>/load</code></td>
+<td><code>{ source: string, env? }</code></td>
+<td><code>{ ok: true }</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">POST</td>
+<td><code>/load-file</code></td>
+<td><code>{ path: string, env? }</code></td>
+<td><code>{ ok: true }</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">POST</td>
+<td><code>/init</code></td>
+<td><code>{ env? }</code></td>
+<td><code>{ state }</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">POST</td>
+<td><code>/view</code></td>
+<td><code>{ state? , audience?: "agent" \| "human" }</code></td>
+<td><code>&lt;html&gt;</code> | <code>{ jace }</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">POST</td>
+<td><code>/press</code></td>
+<td><code>{ action, params?, env? }</code></td>
+<td><code>{ state, jace, result?, audit_preview?, events?, error? }</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">POST</td>
+<td><code>/actions</code></td>
+<td><code>{ action, params?, dry_run?, intent?, session_id? }</code></td>
+<td>JACE Action Result</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes</strong></p>
+<ul>
+<li><code>/press</code> is your minimal shape. <code>/actions</code> accepts the <strong>jace envelope</strong> (recommended for agents).</li>
+<li>If <code>env.dry_run === true</code> <strong>or</strong> <code>dry_run: true</code>, the runtime <strong>does not persist</strong> the returned state.</li>
+<li>If <code>audience: "agent"</code> on <code>/view</code>, the runtime should <strong>strip <code>presentation</code></strong> fields.</li>
+<li>When <code>audience: "agent"</code>, the runtime strips <code>presentation</code> and filters out nodes with <code>audience: "human"</code>.</li>
+<li>When <code>audience: "human"</code>, it may ignore agent-only nodes and keep <code>presentation</code>.</li>
+<li>If <code>audience</code> is omitted, the runtime chooses representation by <code>Accept</code> (<code>application/jace+json</code> → JACE JSON, <code>text/html</code> → HTML).</li>
+</ul>
+<h4 id="endpoint-consistency">Endpoint Consistency<a class="headerlink" href="#endpoint-consistency" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Prefer <code>/agent/events</code> for SSE in all examples.</li>
+<li><code>/actions</code> accepts the JACE envelope; <code>/press</code> remains minimal for demos.</li>
+</ul>
+<hr />
+<h3 id="4-determinism-safety">4) Determinism &amp; Safety<a class="headerlink" href="#4-determinism-safety" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Clock</strong>: <code>Date.now()</code> and zero-arg <code>new Date()</code> return a fixed timestamp; override with <code>env.now</code> if needed.</li>
+<li><strong>RNG</strong>: <code>Math.random()</code> is seeded (xorshift).</li>
+<li><strong>No network/threads/timers</strong> inside VM.</li>
+<li><strong>Optional fuel/timeout</strong>: use QuickJS interrupt handler to cap long-running actions.</li>
+<li><strong>Marshalling</strong>: host↔VM via JSON only (no references).</li>
+</ul>
+<h4 id="timeouts-fuel">Timeouts &amp; Fuel<a class="headerlink" href="#timeouts-fuel" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Default max action wall-time: <strong>2s</strong>; on breach, return <code>{ error: { code: "INTERNAL", message: "Action timed out" } }</code>.</li>
+<li>Optional instruction-count (fuel) guard; on breach, set message <code>"Fuel exhausted"</code>.</li>
+</ul>
+<hr />
+<h3 id="5-sessions-multi-tenant">5) Sessions (multi-tenant)<a class="headerlink" href="#5-sessions-multi-tenant" title="Permanent link">&para;</a></h3>
+<p>Use <code>session_id</code> to isolate state per agent or conversation:</p>
+<ol>
+<li>Client chooses/creates a <code>session_id</code>.</li>
+<li>
+<p>On <code>/view</code> &amp; <code>/press</code>:</p>
+</li>
+<li>
+<p>Host looks up <code>STATE[session_id]</code>.</p>
+</li>
+<li>Before running, <strong>assign</strong> it to <code>jace.___state</code>.</li>
+<li>After action: if not <code>dry_run</code>, <strong>persist</strong> the new state back to <code>STATE[session_id]</code>.</li>
+<li>Return <code>{ state, jace }</code> as usual.</li>
+</ol>
+<blockquote>
+<p>This makes the runtime safe for many concurrent agent users.</p>
+</blockquote>
+<p><strong>Idempotency:</strong> For commits, the host MUST enforce <code>Idempotency-Key</code> de-duplication <strong>per <code>session_id</code></strong>. Dry-run MUST NOT persist state nor consume idempotency keys.</p>
+<hr />
+<h3 id="6-action-semantics">6) Action semantics<a class="headerlink" href="#6-action-semantics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dry-run first</strong>: preview audit &amp; result; do <strong>not</strong> persist.</li>
+<li><strong>Commit</strong>: repeat without <code>dry_run</code> to persist.</li>
+<li><strong>Idempotency</strong>: accept <code>Idempotency-Key</code> on non-dry-run; de-dupe duplicates.</li>
+<li><strong>Errors</strong>: return <code>{ error: { code, message }, audit_preview }</code> with 4xx/5xx status.</li>
+</ul>
+<hr />
+<h3 id="7-calculator-example">7) Calculator example<a class="headerlink" href="#7-calculator-example" title="Permanent link">&para;</a></h3>
+<p><strong>Load &amp; run</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start with embedded demo</span>
+npx<span class="w"> </span>ts-node<span class="w"> </span>src/jace-sandbox-runtime.ts
+
+<span class="c1"># Or start with the external module</span>
+npx<span class="w"> </span>ts-node<span class="w"> </span>src/jace-sandbox-runtime.ts<span class="w"> </span>src/calc-module.js
+</code></pre></div></p>
+<p><strong>Press flow (stack-like)</strong>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:3323/press<span class="w">   </span>-H<span class="w"> </span><span class="s1">&#39;content-type: application/json&#39;</span><span class="w">   </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;action&quot;:&quot;calc.input&quot;,&quot;params&quot;:{&quot;digit&quot;:7}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:3323/press<span class="w">   </span>-H<span class="w"> </span><span class="s1">&#39;content-type: application/json&#39;</span><span class="w">   </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;action&quot;:&quot;calc.op&quot;,&quot;params&quot;:{&quot;op&quot;:&quot;divide&quot;}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:3323/press<span class="w">   </span>-H<span class="w"> </span><span class="s1">&#39;content-type: application/json&#39;</span><span class="w">   </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;action&quot;:&quot;calc.input&quot;,&quot;params&quot;:{&quot;digit&quot;:2}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:3323/press<span class="w">   </span>-H<span class="w"> </span><span class="s1">&#39;content-type: application/json&#39;</span><span class="w">   </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;action&quot;:&quot;calc.equals&quot;}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+</code></pre></div></p>
+<p><strong>Agent envelope (recommended)</strong>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:3323/actions<span class="w">   </span>-H<span class="w"> </span><span class="s1">&#39;content-type: application/json&#39;</span><span class="w">   </span>-H<span class="w"> </span><span class="s2">&quot;Idempotency-Key: </span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="s2">&quot;</span><span class="w">   </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;action&quot;:&quot;calc.input&quot;,&quot;params&quot;:{&quot;digit&quot;:7},&quot;dry_run&quot;:true,&quot;intent&quot;:&quot;enter digit&quot;}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+</code></pre></div></p>
+<p><strong>TypeScript client</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;http://127.0.0.1:3323/actions&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;content-type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Idempotency-Key&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomUUID</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;calc.equals&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">dry_run</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">session_id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;sess_1&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">j</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span><span class="w"> </span><span class="c1">// { ok?, state, result?, audit_preview?, ... }</span>
+</code></pre></div></p>
+<hr />
+<h3 id="8-agent-first-dashboard-pattern">8) Agent-first Dashboard pattern<a class="headerlink" href="#8-agent-first-dashboard-pattern" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Model your dashboard UI as JACE <strong>views</strong> with <strong>affordances</strong>.</li>
+<li>Expose those modules through this runtime (or compile your code into JACE).</li>
+<li>Agents call <code>/view</code> (audience=agent) to understand entities, then <code>/actions</code> to act.</li>
+<li>Humans can render the same JACE to HTML — shared semantics, different audience.</li>
+</ol>
+<hr />
+<h3 id="9-events-optional">9) Events (optional)<a class="headerlink" href="#9-events-optional" title="Permanent link">&para;</a></h3>
+<p>If an action returns <code>events</code>, relay them via SSE:</p>
+<ul>
+<li><strong>Server</strong>: <code>/events</code> streams <code>data: {type,id,ts,entity,changes}\n\n</code>.</li>
+<li><strong>Client</strong>: <code>new EventSource("/events")</code> → react to updates.</li>
+</ul>
+<p>This pairs well with long-running workflows and approval steps.</p>
+<hr />
+<h3 id="10-roadmap-runtime">10) Roadmap (runtime)<a class="headerlink" href="#10-roadmap-runtime" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Done</strong>: isolated QuickJS VM, deterministic clock/RNG, minimal HTTP API, calc module, TS client.</li>
+<li><strong>Next</strong>:</li>
+<li>Dry-run persistence guard (runtime-level)</li>
+<li><code>/actions</code> endpoint with JACE envelope + Action Result</li>
+<li>Session store (host map / Redis / KV)</li>
+<li>Presentation stripping on <code>audience=agent</code></li>
+<li>Interrupt/fuel guard &amp; timeouts</li>
+<li>SSE relay for <code>events</code></li>
+<li>Capability injection (opt-in IO like KV/crypto/clock)</li>
+</ul>
+<hr />
+<h3 id="11-security-checklist">11) Security checklist<a class="headerlink" href="#11-security-checklist" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Never enable <code>eval</code>, timers, or network inside the VM.</li>
+<li>Enforce <strong>max body size</strong> (already done) and <strong>timeouts</strong> per call.</li>
+<li>Validate payloads with JSON Schema (Ajv) if user-facing.</li>
+<li>Treat module code as untrusted unless you own it; review before loading.</li>
+<li>Log <code>action</code>, <code>params</code>, <code>audit_preview</code>, <code>session_id</code>, <code>Idempotency-Key</code>.</li>
+</ul>
+<hr />
+<h3 id="12-faq">12) FAQ<a class="headerlink" href="#12-faq" title="Permanent link">&para;</a></h3>
+<p><strong>Why QuickJS?</strong>
+Tiny, deterministic, embeddable — perfect for safe Agent Apps.</p>
+<p><strong>Why actions instead of internal JS calls?</strong>
+Affordances create an explicit, auditable machine interface for agents.</p>
+<p><strong>How do I connect this to my real data?</strong>
+Inject capabilities via <code>env</code> (e.g., <code>kv</code>, <code>rpc</code>) or wrap the runtime behind a server that translates actions to backend calls.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

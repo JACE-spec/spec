@@ -1,7 +1,7 @@
 site_name: JACE (JSON Agent Context Envelope)
 site_url: https://jace-spec.github.io/spec/
 repo_url: https://github.com/jace-spec/spec
-docs_dir: .
+docs_dir: docs
 
 theme:
   name: material

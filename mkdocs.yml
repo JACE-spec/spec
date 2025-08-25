@@ -1,15 +1,24 @@
 site_name: JACE (JSON Agent Context Envelope)
-site_url: https://jace-spec.github.io
+site_url: https://jace-spec.github.io/spec/
 repo_url: https://github.com/jace-spec/spec
+docs_dir: .
+
 theme:
   name: material
   features:
     - navigation.instant
+    - navigation.sections
+    - content.code.copy
+    - search.suggest
     - search.highlight
+
 markdown_extensions:
   - admonition
   - toc:
       permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+
 nav:
   - Overview: overview.md
   - Getting Started: getting-started.md

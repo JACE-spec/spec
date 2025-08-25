@@ -4,14 +4,14 @@
 
 Start here:
 
-- [Overview](./overview.md) — what JACE is and why agent-first matters
-- [Getting Started](./getting-started.md) — serve JACE to agents, HTML to humans
-- [Core Concepts](./concepts.md) — entities, props, affordances, presentation
-- [Real-World Usage](./real-world.md) — agents + browsers patterns
-- [Runtime / Sandbox](./runtime-sandbox.md) — interact, not just read
-- [Security](./security.md) — dry runs, audit, idempotency, scopes
-- [FAQ](./faq.md)
-- [Roadmap](./roadmap.md)
+- [Overview](./docs/overview.md) — what JACE is and why agent-first matters
+- [Getting Started](./docs/getting-started.md) — serve JACE to agents, HTML to humans
+- [Core Concepts](./docs/concepts.md) — entities, props, affordances, presentation
+- [Real-World Usage](./docs/real-world.md) — agents + browsers patterns
+- [Runtime / Sandbox](./docs/runtime-sandbox.md) — interact, not just read
+- [Security](./docs/security.md) — dry runs, audit, idempotency, scopes
+- [FAQ](./docs/faq.md)
+- [Roadmap](./docs/roadmap.md)
 
 > Author once in JSON. Serve `application/jace+json` to agents. Render accessible HTML for people. No scraping. Safe actions with `dry_run` + `audit_preview`.
 
